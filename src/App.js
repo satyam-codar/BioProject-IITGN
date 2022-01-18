@@ -5,6 +5,9 @@ import "./App.css";
 // import AddTutorial from "./components/add-tutorial.component";
 import CancerTable from "./components/cancer-table.component";
 import Search from "./components/home-searchbar";
+import MakeQGRSTable from "./components/qgrsTable-creator";
+import MakeG4HunterTable from "./components/g4HunterTable-creator";
+import ShowImage from "./components/show-images";
 // import Tutorial from "./components/tutorial.component";
 
 class App extends Component {
@@ -38,6 +41,18 @@ class App extends Component {
               path={"/search/query/:param"}
               component={CancerTable}
             />
+            <Route
+              exact
+              path={"/qgrs-details/query/:param"}
+              component={MakeQGRSTable}
+            />
+            <Route
+              exact
+              path={"/g4hunter-details/query/:param"}
+              component={MakeG4HunterTable}
+            />
+            <Route exact path={"/show-plots/:param"} component={ShowImage} />
+
             {/* <Route exact path="/add" component={ AddTutorial } />
             <Route path="/tutorials/:id" component={ Tutorial } /> */}
           </Switch>

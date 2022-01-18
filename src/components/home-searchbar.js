@@ -11,6 +11,7 @@ export default class Search extends Component {
       searchTitle: "",
     };
   }
+
   onChangeSearchTitle(e) {
     const searchTitle = e.target.value;
     this.setState({

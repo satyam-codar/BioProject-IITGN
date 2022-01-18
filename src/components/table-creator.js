@@ -1,15 +1,19 @@
 /** @format */
 
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 class MakeTable extends Component {
   constructor(props) {
     super(props);
+    console.log("hello props from table maker");
+    console.log(this.props);
     this.state = {};
     console.log("hello from tablemaker");
     console.log(props);
   }
   render() {
-    // console.log(this.props);
+    console.log("table-creator");
+    console.log(this.props);
     const { cancerData } = this.props;
     // console.log(cancerData);
     function Data(props) {
@@ -23,12 +27,60 @@ class MakeTable extends Component {
           <td>{props.Expression_pattern}</td>
           <td>{props.Pubmed_ID}</td>
           <td>{props.Alias}</td>
-          <td>{props.Subcellular_localization}</td>
+          <td>
+            <Link to={"/show-plots/" + props.LncRNA_name}>
+              {props.Subcellular_localization}
+            </Link>
+          </td>
+          <td>
+            <Link to={"/qgrs-details/query/" + props.LncRNA_name}>Details</Link>
+          </td>
+          <td>
+            <Link to={"/g4hunter-details/query/" + props.LncRNA_name}>
+              Detail
+            </Link>
+          </td>
         </tr>
       );
     }
     return (
       <div className="table-responsive">
+        {/* <div className="row">
+          <div
+            className="col-md-6 p-2"
+            style={{ textAlign: "center", border: "1px solid green" }}
+          >
+            {cancerData.length ? (
+              <h5>
+                <Link to={"/qgrs-details/query/" + cancerData[0].LncRNA_name}>
+                  QGRS mapper detail
+                </Link>
+                of <b style={{ color: "green" }}>{cancerData[0].LncRNA_name}</b>
+                lncRNA
+              </h5>
+            ) : (
+              <div></div>
+            )}
+          </div>
+          <div
+            className="col-md-6 p-2"
+            style={{ textAlign: "center", border: "1px solid green" }}
+          >
+            {cancerData.length ? (
+              <h5>
+                <Link
+                  to={"/g4hunter-details/query/" + cancerData[0].LncRNA_name}
+                >
+                  G4 hunter detail
+                </Link>
+                of <b style={{ color: "green" }}>{cancerData[0].LncRNA_name}</b>
+                lncRNA
+              </h5>
+            ) : (
+              <div></div>
+            )}
+          </div>
+        </div> */}
         <table className="table table-sm table-hover ml-3">
           <thead>
             <tr>
@@ -40,6 +92,8 @@ class MakeTable extends Component {
               <th scope="col">Pubmed ID</th>
               <th scope="col">Alias</th>
               <th scope="col">Subcellular localization</th>
+              <th scope="col">QGRS details</th>
+              <th scope="col">g4-Hunter details</th>
             </tr>
           </thead>
 

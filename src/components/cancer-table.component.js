@@ -142,12 +142,9 @@ export default class CancerTable extends Component {
         <div>
           <div>
             <h4>Cancer Data:</h4>
-            <b>
-              <hr />
-            </b>
           </div>
           <div>
-            <MakeTable cancerData={cancerTable} />
+            <MakeTable cancerData={cancerTable} param={searchTitle} />
           </div>
         </div>
       </div>
